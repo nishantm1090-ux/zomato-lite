@@ -43,7 +43,7 @@ export function ReviewForm({ restaurantId }: { restaurantId: number }) {
     <form onSubmit={handleSubmit} className="mt-8 space-y-8">
       {/* Star picker */}
       <fieldset>
-        <legend className="text-sm font-medium text-neutral-800">
+        <legend className="text-sm font-medium text-foreground/90">
           Your rating
         </legend>
         <div className="mt-3 flex items-center gap-1">
@@ -54,14 +54,14 @@ export function ReviewForm({ restaurantId }: { restaurantId: number }) {
               aria-label={`${n} star${n === 1 ? "" : "s"}`}
               aria-pressed={rating === n}
               onClick={() => setRating(n)}
-              className={`text-4xl transition-colors ${
-                n <= rating ? "text-accent" : "text-neutral-300"
+              className={`text-4xl transition-colors sm:text-5xl ${
+                n <= rating ? "text-accent" : "text-star-empty"
               }`}
             >
               ★
             </button>
           ))}
-          <span className="ml-3 text-sm text-neutral-500" aria-live="polite">
+          <span className="ml-3 text-sm text-muted" aria-live="polite">
             {rating > 0 ? `${rating} / 5` : "Tap to rate"}
           </span>
         </div>
@@ -71,7 +71,7 @@ export function ReviewForm({ restaurantId }: { restaurantId: number }) {
       <fieldset>
         <label
           htmlFor="comment"
-          className="block text-sm font-medium text-neutral-800"
+          className="block text-sm font-medium text-foreground/90"
         >
           Your comment
         </label>
@@ -81,7 +81,7 @@ export function ReviewForm({ restaurantId }: { restaurantId: number }) {
           onChange={(event) => setComment(event.target.value)}
           rows={5}
           placeholder="What was it like?"
-          className="mt-3 w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 leading-relaxed outline-none transition-colors focus:border-accent"
+          className="mt-3 w-full rounded-lg border border-edge bg-background px-4 py-3 leading-relaxed text-foreground outline-none transition-colors placeholder:text-muted focus:border-accent"
         />
       </fieldset>
 
@@ -89,7 +89,7 @@ export function ReviewForm({ restaurantId }: { restaurantId: number }) {
       {error && (
         <p
           role="alert"
-          className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+          className="rounded-lg border border-danger-edge bg-danger-bg px-4 py-3 text-sm text-danger-text"
         >
           {error}
         </p>
@@ -98,11 +98,11 @@ export function ReviewForm({ restaurantId }: { restaurantId: number }) {
       <button
         type="submit"
         disabled={!canSubmit}
-        className={`w-full rounded-lg px-6 py-3 text-sm font-medium transition-colors ${
+        className={
           canSubmit
-            ? "bg-accent text-white hover:bg-amber-800"
-            : "cursor-not-allowed bg-neutral-200 text-neutral-400"
-        }`}
+            ? "btn-primary w-full"
+            : "w-full cursor-not-allowed rounded-lg bg-edge px-6 py-3 text-sm font-medium text-muted"
+        }
       >
         {submitting ? "Sending…" : "Submit review"}
       </button>

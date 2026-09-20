@@ -31,9 +31,11 @@ export default async function ReviewPage({
   if (!name) notFound();
 
   return (
-    <main className="mx-auto max-w-[560px] px-6 py-12">
-      <p className="text-sm text-neutral-500">Write a review</p>
-      <h1 className="mt-1 text-3xl font-semibold tracking-tight">{name}</h1>
+    <main className="mx-auto w-full max-w-[560px] px-5 py-10 sm:px-6 sm:py-14">
+      <p className="text-sm text-muted">Write a review</p>
+      <h1 className="mt-1 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+        {name}
+      </h1>
       <ReviewForm restaurantId={id} />
     </main>
   );
