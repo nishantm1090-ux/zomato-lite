@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 
 // This page reads live data, so it must never be pre-rendered at build time.
 export const dynamic = "force-dynamic";
@@ -142,12 +143,12 @@ export default async function RestaurantPage({
       )}
 
       {/* 5. The way in — writing a review */}
-      <a
+      <Link
         href={`/review/${restaurantId}`}
         className="mt-12 inline-block rounded-lg bg-accent px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-amber-800"
       >
         Write a review
-      </a>
+      </Link>
     </main>
   );
 }

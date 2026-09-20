@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main className="mx-auto flex min-h-[70vh] max-w-[560px] flex-col items-start justify-center px-6 py-12">
@@ -9,12 +11,12 @@ export default function Home() {
         Indian &middot; Sector 32. See what people are saying, and add your own
         review.
       </p>
-      <a
+      <Link
         href="/restaurant/1"
         className="mt-8 inline-block rounded-lg bg-accent px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-amber-800"
       >
         See reviews
-      </a>
+      </Link>
     </main>
   );
 }
