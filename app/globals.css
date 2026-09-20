@@ -39,7 +39,19 @@
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
+  /* Very faint texture behind all UI: a fine dot grid with a sparser,
+     warmer overlay offset for depth. Dots only — no gradients, no glow.
+     Opacity is in the 4-5% range so it reads as paper grain, not noise. */
+  background-image:
+    radial-gradient(circle at 0 0, rgba(244, 241, 234, 0.05) 1px, transparent 1.1px),
+    radial-gradient(circle at 0 0, rgba(245, 158, 11, 0.05) 1.5px, transparent 2px);
+  background-size:
+    26px 26px,
+    104px 104px;
+  background-position:
+    0 0,
+    13px 13px;
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
