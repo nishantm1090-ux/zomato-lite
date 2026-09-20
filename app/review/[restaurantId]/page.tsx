@@ -4,8 +4,10 @@ import { ReviewForm } from "./ReviewForm";
 // Live data again — no build-time pre-rendering.
 export const dynamic = "force-dynamic";
 
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
+// The API lives on this same server. On Vercel we call the public production
+// alias (the deployment-internal URL is protected, so calling it returns HTML).
+const baseUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
   : "http://localhost:3000";
 
 async function getRestaurantName(id: number): Promise<string | null> {
@@ -32,7 +34,7 @@ export default async function ReviewPage({
     <main className="mx-auto max-w-[560px] px-6 py-12">
       <p className="text-sm text-neutral-500">Write a review</p>
       <h1 className="mt-1 text-3xl font-semibold tracking-tight">{name}</h1>
-      <ReviewForm restaurantId={id} restaurantName={name} />
+      <ReviewForm restaurantId={id} />
     </main>
   );
 }

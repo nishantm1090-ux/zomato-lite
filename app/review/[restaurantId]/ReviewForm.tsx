@@ -4,13 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 // This is the only file that can feel clicks — the browser runs it.
-export function ReviewForm({
-  restaurantId,
-  restaurantName,
-}: {
-  restaurantId: number;
-  restaurantName: string;
-}) {
+export function ReviewForm({ restaurantId }: { restaurantId: number }) {
   const router = useRouter();
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");

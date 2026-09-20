@@ -3,9 +3,10 @@ import { notFound } from "next/navigation";
 // This page reads live data, so it must never be pre-rendered at build time.
 export const dynamic = "force-dynamic";
 
-// Where is the API? On the real site it is Vercel's url; locally it is us.
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
+// The API lives on this same server. On Vercel we call the public production
+// alias (the deployment-internal URL is protected, so calling it returns HTML).
+const baseUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
   : "http://localhost:3000";
 
 type Review = {
