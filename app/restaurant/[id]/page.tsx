@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { Banner } from "../../components/Banner";
 
 // This page reads live data, so it must never be pre-rendered at build time.
 export const dynamic = "force-dynamic";
@@ -76,8 +77,15 @@ export default async function RestaurantPage({
 
   return (
     <main className="mx-auto w-full max-w-[560px] px-5 py-10 sm:px-6 sm:py-14">
+      {/* The banner greets you before the reviews. */}
+      <Banner
+        kicker="Sector 32 · Ludhiana"
+        tagline="Honest reviews of the wrap people queue for — fresh from real customers."
+        showStars
+      />
+
       {/* 1. Name, with cuisine and area underneath */}
-      <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+      <h1 className="mt-10 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
         {restaurant.name}
       </h1>
       <p className="mt-2 text-sm text-muted">
