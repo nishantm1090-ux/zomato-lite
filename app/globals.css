@@ -68,6 +68,23 @@ body {
     background: var(--accent-strong);
   }
 
+  /* Secondary action: quiet outline button, accent on hover. */
+  .btn-secondary {
+    display: inline-block;
+    border: 1px solid var(--edge);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--surface);
+    color: var(--foreground);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
   /* Cards: border does the work instead of a drop shadow. */
   .card {
     border: 1px solid var(--edge);

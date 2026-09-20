@@ -1,15 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { Celebration } from "./Celebration";
 
 // This is the only file that can feel clicks — the browser runs it.
 export function ReviewForm({ restaurantId }: { restaurantId: number }) {
-  const router = useRouter();
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const canSubmit = rating > 0 && comment.trim() !== "" && !submitting;
 
@@ -25,7 +25,7 @@ export function ReviewForm({ restaurantId }: { restaurantId: number }) {
       });
 
       if (response.ok) {
-        router.push(`/restaurant/${restaurantId}`);
+        setSubmitted(true);
         return;
       }
 
@@ -37,6 +37,10 @@ export function ReviewForm({ restaurantId }: { restaurantId: number }) {
     } finally {
       setSubmitting(false);
     }
+  }
+
+  if (submitted) {
+    return <Celebration restaurantId={restaurantId} />;
   }
 
   return (
